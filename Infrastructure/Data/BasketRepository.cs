@@ -1,8 +1,8 @@
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 
 namespace Infrastructure.Data
@@ -23,13 +23,13 @@ namespace Infrastructure.Data
         public async Task<CustomerBasket> GetBasketAsync(string basketId)
         {
             var data = await _database.StringGetAsync(basketId);
-            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
+            return data.IsNullOrEmpty ? null : JsonConvert.DeserializeObject<CustomerBasket>(data);
         }
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
             // Basket will be available for 15 days in memory
-            var created = await _database.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(15));
+            var created = await _database.StringSetAsync(basket.Id, JsonConvert.SerializeObject(basket), TimeSpan.FromDays(15));
 
             if (!created) return null;
 

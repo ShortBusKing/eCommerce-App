@@ -4,6 +4,8 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Infrastructure.Migrations
 {
@@ -16,23 +18,25 @@ namespace Infrastructure.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.1");
 
+            
             modelBuilder.Entity("Core.Entities.OrderAggregate.DeliveryMethod", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .UseIdentityColumn()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DeliveryTime")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR(15)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<double>("Price")
-                        .HasColumnType("decimal(20,2)");
+                        .HasColumnType("MONEY");
 
                     b.Property<string>("ShortName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("Id");
 
@@ -43,6 +47,7 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .UseIdentityColumn()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("BuyerEmail")
@@ -75,6 +80,7 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .UseIdentityColumn()
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("OrderId")
@@ -93,49 +99,12 @@ namespace Infrastructure.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("Core.Entities.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(185);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(120);
-
-                    b.Property<string>("PictureUrl")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("decimal(20,2)");
-
-                    b.Property<int>("ProductBrandId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductTypeId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductBrandId");
-
-                    b.HasIndex("ProductTypeId");
-
-                    b.ToTable("Products");
-                });
 
             modelBuilder.Entity("Core.Entities.ProductBrand", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .UseIdentityColumn(1, 1)
+                        .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -148,8 +117,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.ProductType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .UseIdentityColumn(1, 1)
+                        .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -168,7 +137,8 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Core.Entities.OrderAggregate.Address", "ShipToAddress", b1 =>
                         {
                             b1.Property<int>("OrderId")
-                                .HasColumnType("INTEGER");
+                                .UseIdentityColumn(1, 1)
+                                .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
                             b1.Property<string>("City")
                                 .HasColumnType("TEXT");
@@ -207,6 +177,8 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Core.Entities.OrderAggregate.ProductItemOrdered", "ItemOrdered", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
+                                .ValueGeneratedOnAdd()
+                                .UseIdentityColumn()
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("PictureUrl")
@@ -228,19 +200,58 @@ namespace Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
-                {
-                    b.HasOne("Core.Entities.ProductBrand", "ProductBrand")
+            {
+
+
+                b.Property<int>("Id")
+                    .UseIdentityColumn(1,1)
+                    .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+
+
+                b.Property<string>("Description")
+                    .IsRequired()
+                    .HasColumnType("TEXT")
+                    .HasMaxLength(185);
+
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("TEXT")
+                    .HasMaxLength(120);
+
+                b.Property<string>("PictureUrl")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
+
+                b.Property<double>("Price")
+                    .HasColumnType("decimal(20,2)");
+
+                b.Property<int>("ProductBrandId")
+                    .HasColumnType("INTEGER");
+
+                b.Property<int>("ProductTypeId")
+                    .HasColumnType("INTEGER");
+
+                
+                b.HasIndex("ProductBrandId");
+
+                b.HasIndex("ProductTypeId");
+
+                b.ToTable("Products");
+                
+                b.HasKey("Id");
+
+                b.HasOne("Core.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
                         .HasForeignKey("ProductBrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.ProductType", "ProductType")
+                b.HasOne("Core.Entities.ProductType", "ProductType")
                         .WithMany()
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
+            });
 #pragma warning restore 612, 618
         }
     }

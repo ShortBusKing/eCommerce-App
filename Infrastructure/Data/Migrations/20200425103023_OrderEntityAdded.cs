@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Migrations
 {
@@ -11,12 +13,11 @@ namespace Infrastructure.Migrations
                 name: "DeliveryMethods",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ShortName = table.Column<string>(nullable: true),
-                    DeliveryTime = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(type: "decimal(20,2)", nullable: false)
+                    Id = table.Column<int>(nullable: false),
+                    ShortName = table.Column<string>(type:"VARCHAR(128)", maxLength: 128, nullable: true),
+                    DeliveryTime = table.Column<DateTime>(type:"DATETIME2",nullable: true),
+                    Description = table.Column<string>(type:"VARCHAR(2000)", maxLength: 2000, nullable: true),
+                    Price = table.Column<decimal>(type: "MONEY", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +28,8 @@ namespace Infrastructure.Migrations
                 name: "ProductBrands",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Id = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(128)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,9 +40,8 @@ namespace Infrastructure.Migrations
                 name: "ProductTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Id = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(128)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,20 +52,19 @@ namespace Infrastructure.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    BuyerEmail = table.Column<string>(nullable: true),
-                    OrderDate = table.Column<DateTimeOffset>(nullable: false),
-                    ShipToAddress_FirstName = table.Column<string>(nullable: true),
-                    ShipToAddress_LastName = table.Column<string>(nullable: true),
-                    ShipToAddress_Street = table.Column<string>(nullable: true),
-                    ShipToAddress_City = table.Column<string>(nullable: true),
-                    ShipToAddress_State = table.Column<string>(nullable: true),
-                    ShipToAddress_Zipcode = table.Column<string>(nullable: true),
+                    Id = table.Column<int>(nullable: false),
+                    BuyerEmail = table.Column<string>(type: "VARCHAR(256)", nullable: true),
+                    OrderDate = table.Column<DateTime>(type:"DATETIME2", nullable: false),
+                    ShipToAddress_FirstName = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ShipToAddress_LastName = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ShipToAddress_Street = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ShipToAddress_City = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ShipToAddress_State = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ShipToAddress_Zipcode = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
                     DeliveryMethodId = table.Column<int>(nullable: true),
-                    Subtotal = table.Column<double>(nullable: false),
-                    Status = table.Column<string>(nullable: false),
-                    PaymentIntentId = table.Column<string>(nullable: true)
+                    Subtotal = table.Column<decimal>(type:"MONEY", nullable: false),
+                    Status = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: false),
+                    PaymentIntentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,12 +81,11 @@ namespace Infrastructure.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(maxLength: 120, nullable: false),
-                    Description = table.Column<string>(maxLength: 185, nullable: false),
-                    Price = table.Column<double>(type: "decimal(20,2)", nullable: false),
-                    PictureUrl = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(2000)", maxLength: 2000, nullable: false),
+                    Price = table.Column<decimal>(type: "MONEY", nullable: false),
+                    PictureUrl = table.Column<string>(type:"VARCHAR(MAX)", nullable: false),
                     ProductTypeId = table.Column<int>(nullable: false),
                     ProductBrandId = table.Column<int>(nullable: false)
                 },
@@ -107,18 +104,18 @@ namespace Infrastructure.Migrations
                         principalTable: "ProductTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                 
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(nullable: false),
                     ItemOrdered_ProductItemId = table.Column<int>(nullable: true),
-                    ItemOrdered_ProductName = table.Column<string>(nullable: true),
-                    ItemOrdered_PictureUrl = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(type: "decimal(20,2)", nullable: false),
+                    ItemOrdered_ProductName = table.Column<string>(type: "VARCHAR(128)", maxLength: 128, nullable: true),
+                    ItemOrdered_PictureUrl = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Price = table.Column<decimal>(type: "MONEY", nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: true)
                 },
@@ -131,6 +128,7 @@ namespace Infrastructure.Migrations
                         principalTable: "Order",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+
                 });
 
             migrationBuilder.CreateIndex(

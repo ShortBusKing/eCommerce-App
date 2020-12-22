@@ -1,0 +1,163 @@
+[
+  {
+    "Name": "Animal Face",
+    "Description": "Grown by: Fig Farms<br>Bred by: Seed Junky<br>Lineage: Face Off OG x Animal Mints<br>Tasting Notes: Kiwi, anise, paint thinner<br>Look: Dense, neon green, kush structured flowers with thin dark pistils.",
+    "Price": 3500,
+    "PictureUrl": "images/products/img (1).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Kush Mountains",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3375,
+    "PictureUrl": "images/products/img (2).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Clout King | Clout Face Pre-Roll",
+    "Description": "Rolled up and ready to smoke, Pre-Rolls are a convenient and effective way to consume cannabis. Pre-Rolls come in many different forms and can be rolled with flower, shake, 'b-buds', infused with concentrates, and more.",
+    "Price": 3375,
+    "PictureUrl": "images/products/img (3).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 1
+  },
+  {
+    "Name": "Kush Mountains - Indica",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 4249,
+    "PictureUrl": "images/products/img (4).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Kush Mountains - Setiva",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3499,
+    "PictureUrl": "images/products/img (5).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Kush Mountains - Dog Poop",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3499,
+    "PictureUrl": "images/products/img (6).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 2
+  },
+  {
+    "Name": "Kush Mountains - Smells like shoes",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 2392,
+    "PictureUrl": "images/products/img (7).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 3
+  },
+  {
+    "Name": "YONEX",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3000,
+    "PictureUrl": "images/products/img (8).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 3
+  },
+  {
+    "Name": "Super Ace",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 2590,
+    "PictureUrl": "images/products/img (9).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Badminton",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3500,
+    "PictureUrl": "images/products/img (10).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Badminton",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 3700,
+    "PictureUrl": "images/products/img (11).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Puma",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 4999,
+    "PictureUrl": "images/products/img (12).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 5
+  },
+  {
+    "Name": "Puma",
+    "Description": "Dried cannabis flower is primarily ingested via inhalation, either by smoking or vaporizing the product. Activation time for smoking or vaping is roughly about 5 minutes and can last up to a few hours.",
+    "Price": 5200,
+    "PictureUrl": "images/products/img (13).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 5
+  },
+  {
+    "Name": "pitch",
+    "Description": "With features and functions designed to withstand long hours out on the pitch, these one8 19 FH Rubber shoes have been engineered to offer comfort to cricketers.",
+    "Price": 5700,
+    "PictureUrl": "images/products/img (14).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 5
+  },
+  {
+    "Name": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
+    "Description": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
+    "Price": 4125,
+    "PictureUrl": "images/products/img (15).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 7
+  },
+  {
+    "Name": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
+    "Description": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
+    "Price": 5249,
+    "PictureUrl": "images/products/img (16).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 7
+  },
+  {
+    "Name": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
+    "Description": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
+    "Price": 2999,
+    "PictureUrl": "images/products/img (17).jpg",
+    "ProductTypeId": 1,
+    "ProductBrandId": 7
+  },
+  {
+    "Name": "Yonex VCORE Pro 100 A Tennis Racquet (270gm, Strung)",
+    "Description": "For offensive players looking to win with game-changing spin and power.",
+    "Price": 6099,
+    "PictureUrl": "images/products/img (18).jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
+    "Description": "For offensive players looking to win with game-changing spin and power.",
+    "Price": 6399,
+    "PictureUrl": "images/products/img (19).jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 4
+  },
+  {
+    "Name": "Yonex VCORE Pro 100 2019 Tennis Racquet (280gm, Unstrung)",
+    "Description": "For offensive players looking to win with game-changing spin and power.",
+    "Price": 13299,
+    "PictureUrl": "images/products/img (20).jpg",
+    "ProductTypeId": 2,
+    "ProductBrandId": 4
+  }
+
+]

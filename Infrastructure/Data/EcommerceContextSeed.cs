@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Data
 {
@@ -16,11 +16,12 @@ namespace Infrastructure.Data
         {
             try
             {
+                JsonSerializer js = new JsonSerializer();
                 if (!context.ProductBrands.Any())
                 {
                     var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
-
-                    var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
+                    JsonReader jr = new JsonTextReader(new StringReader(brandsData));
+                   List<ProductBrand> brands = js.Deserialize<List<ProductBrand>>(jr);
 
                     foreach (var item in brands)
                     {
@@ -31,9 +32,9 @@ namespace Infrastructure.Data
                 }
                 if (!context.ProductTypes.Any())
                 {
-                    var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
-
-                    var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
+                    var typeData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
+                    JsonReader jr = new JsonTextReader(new StringReader(typeData));
+                    var types = js.Deserialize<List<ProductType>>(jr);
 
                     foreach (var item in types)
                     {
@@ -45,8 +46,8 @@ namespace Infrastructure.Data
                 if (!context.Products.Any())
                 {
                     var productsData = File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
-
-                    var products = JsonSerializer.Deserialize<List<Product>>(productsData);
+                    JsonReader jr = new JsonTextReader(new StringReader(productsData));
+                    var products = js.Deserialize<List<Product>>(jr);
 
                     foreach (var item in products)
                     {
@@ -58,8 +59,8 @@ namespace Infrastructure.Data
                 if (!context.DeliveryMethods.Any())
                 {
                     var deliveryData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
-
-                    var DeliveryMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData);
+                    JsonReader jr = new JsonTextReader(new StringReader(deliveryData));
+                    var DeliveryMethods = js.Deserialize<List<DeliveryMethod>>(jr);
 
                     foreach (var item in DeliveryMethods)
                     {

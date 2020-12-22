@@ -12,11 +12,13 @@ namespace API.Helpers
             CreateMap<Product, ProductToReturnDTO>()
                 .ForMember(d => d.ProductBrand, o=> o.MapFrom(s => s.ProductBrand.Name))
                 .ForMember(d => d.ProductType, o=> o.MapFrom(s => s.ProductType.Name))
-                .ForMember(d => d.PictureUrl, o=> o.MapFrom<ProductUrlResolver>());
+                .ForMember(d => d.PictureUrl, o=> o.MapFrom<ProductUrlResolver>())
+                .ForMember(d => d.Id, o=> o.UseDestinationValue());
+                
 
             CreateMap<Core.Entities.Identity.Address, AddressDTO>().ReverseMap();
             CreateMap<CustomerBasketDTO, CustomerBasket>();
-            CreateMap<BasketItemDTO, BasketItem>();
+            CreateMap<BasketItemDTO, BasketItem>() ;
             CreateMap<AddressDTO, Core.Entities.OrderAggregate.Address>();
             CreateMap<Order, OrderToReturnDTO>()
                 .ForMember(d => d.DeliveryMethod, o=> o.MapFrom(s => s.DeliveryMethod.ShortName))

@@ -21,7 +21,7 @@ namespace Core.Entities.OrderAggregate
 
         public string BuyerEmail { get; set; }
         // It will store the local time where the order was made
-        public DateTimeOffset OrderDate { get; set; } =  DateTimeOffset.Now;
+        public DateTime OrderDate { get; set; } =  DateTime.Now;
         public Address ShipToAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }

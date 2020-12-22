@@ -1,18 +1,29 @@
 [
   {
-    "Id": 1,
-    "Name": "Shoes"
+    "Name": "Flower"
   },
   {
-    "Id": 2,
-    "Name": "Rackets"
+    "Name": "Pre-Roll"
   },
   {
-    "Id": 3,
-    "Name": "Football"
+    "Name": "Vaporizors"
   },
   {
-    "Id": 4,
-    "Name": "Kit Bags"
+    "Name": "Concentrates"
+  },
+  {
+    "Name": "Edibles"
+  },
+  {
+    "Name": "Tinctures"
+  },
+  {
+    "Name": "Topicals"
+  },
+  {
+    "Name": "Accessories"
+  },
+  {
+    "Name": "Apparel"
   }
 ]

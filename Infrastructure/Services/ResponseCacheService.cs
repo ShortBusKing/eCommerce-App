@@ -1,8 +1,9 @@
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Interfaces;
 using StackExchange.Redis;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Infrastructure.Services
 {
@@ -21,13 +22,12 @@ namespace Infrastructure.Services
                 return;
             }
 
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
+            //var options = new JsonSerializerOptions
+            //{
+            //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            //};
 
-            var serializedResponse = JsonSerializer.Serialize(response, options);
-            await _database.StringSetAsync(cacheKey, serializedResponse, timeToLive);
+            await _database.StringSetAsync(cacheKey, JsonConvert.SerializeObject(response), timeToLive);
 
         }
 
