@@ -1,3 +1,6 @@
+/* Steps: 1 Execute this script.  EcommerceContextSeed line 20  */
+
+
 USE [eCommerce]
 GO
 /****** Object:  Table [dbo].[DeliveryMethods]    Script Date: 12/21/2020 6:21:36 PM ******/
@@ -26,7 +29,7 @@ GO
 CREATE TABLE [dbo].[DeliveryMethods](
 	[Id] [int] IDENTITY (1,1) NOT NULL,
 	[ShortName] [varchar](128) NULL,
-	[DeliveryTime] [datetime2](7) NULL,
+	[DeliveryTime] VARCHAR(15) NULL,
 	[Description] [varchar](2000) NULL,
 	[Price] [money] NOT NULL,
  CONSTRAINT [PK_DeliveryMethods] PRIMARY KEY CLUSTERED 
