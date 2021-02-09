@@ -27,7 +27,7 @@ namespace Infrastructure.Identity
                     }
                 };
 
-                await userManager.CreateAsync(user, "Joey2joe");
+                await userManager.CreateAsync(user, "password");
             }
         }
     }
